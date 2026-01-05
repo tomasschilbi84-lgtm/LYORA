@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سلة التسوق - NOBLE PARFUMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 font-sans">
+
+  <!-- ================= العنوان وعودة للمتجر ================= -->
+  <div class="max-w-6xl mx-auto p-4">
+
+    <!-- عداد السلة -->
+    <div class="flex justify-between items-center mb-4">
+      <a href="index.html" class="text-gray-700 hover:text-gray-900 font-semibold">&larr; العودة للمتجر</a>
+      <div class="relative">
+        <a href="cart.html">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9" />
+          </svg>
+          <div id="cart-count" class="absolute -top-2 -left-2 bg-yellow-500 text-white text-sm font-bold w-5 h-5 flex items-center justify-center rounded-full">0</div>
+        </a>
+      </div>
+    </div>
+
+    <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">سلة التسوق</h1>
+
+    <!-- ================= السلة ================= -->
+    <div id="cart-items" class="space-y-4">
+      <!-- المنتجات ستظهر هنا -->
+    </div>
+
+    <!-- الإجمالي -->
+    <div class="mt-6 text-right text-xl font-bold text-gray-700" id="cart-total">
+      الإجمالي: 0dh
+    </div>
+
+    <!-- زر الشراء -->
+    <div class="mt-4 text-right">
+      <button id="checkout-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg font-semibold transition">
+        شراء الآن
+      </button>
+    </div>
+
+  </div>
+
+  <!-- ================= سكريبت السلة ================= -->
+  <script>
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const cartItemsDiv = document.getElementById('cart-items');
+    const cartTotalDiv = document.getElementById('cart-total');
+    const cartCountDiv = document.getElementById('cart-count');
+
+    function renderCart() {
+      cartItemsDiv.innerHTML = '';
+      if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<p class="text-center text-gray-500">السلة فارغة</p>';
+        cartTotalDiv.textContent = 'الإجمالي: 0dh';
+        cartCountDiv.textContent = 0;
+        return;
+      }
+
+      let total = 0;
+      let count = 0;
+
+      cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+        count += item.quantity;
+
+        const div = document.createElement('div');
+        div.className = 'bg-white p-4 rounded-lg shadow flex flex-col sm:flex-row items-center justify-between';
+        div.innerHTML = `
+          <div class="flex items-center w-full sm:w-2/3 mb-4 sm:mb-0">
+            <img src="${item.image || 'tasaw9 db.png'}" alt="${item.name}" class="w-20 h-20 object-cover rounded-lg ml-4">
+            <div>
+              <h3 class="font-bold text-gray-800">${item.name}</h3>
+              <p class="text-gray-600">${item.price}dh</p>
+            </div>
+          </div>
+          <div class="flex items-center space-x-2 space-x-reverse w-full sm:w-1/3 justify-end">
+            <input type="number" min="1" value="${item.quantity}" class="quantity-input border rounded px-2 py-1 w-16 text-center" data-index="${index}">
+            <button class="remove-btn bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition" data-index="${index}">حذف</button>
+          </div>
+        `;
+        cartItemsDiv.appendChild(div);
+      });
+
+      cartTotalDiv.textContent = `الإجمالي: ${total}dh`;
+      cartCountDiv.textContent = count;
+    }
+
+    // تعديل الكمية
+    cartItemsDiv.addEventListener('input', (e) => {
+      if (e.target.classList.contains('quantity-input')) {
+        const index = e.target.getAttribute('data-index');
+        const val = parseInt(e.target.value);
+        if (val > 0) {
+          cart[index].quantity = val;
+          localStorage.setItem('cart', JSON.stringify(cart));
+          renderCart();
+        }
+      }
+    });
+
+    // حذف المنتج
+    cartItemsDiv.addEventListener('click', (e) => {
+      if (e.target.classList.contains('remove-btn')) {
+        const index = e.target.getAttribute('data-index');
+        cart.splice(index, 1);
+        localStorage.setItem('cart', JSON.stringify(cart));
+        renderCart();
+      }
+    });
+
+    // زر الشراء يفتح WhatsApp برقمين
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('السلة فارغة!');
+        return;
+      }
+
+      // صياغة رسالة WhatsApp
+      let message = 'مرحباً، أود شراء المنتجات التالية:\n';
+      cart.forEach(item => {
+        message += `- ${item.name} x ${item.quantity} = ${item.price * item.quantity}dh\n`;
+      });
+      message += `الإجمالي: ${cart.reduce((sum, item) => sum + item.price * item.quantity, 0)}dh`;
+
+      // ترميز الرسالة للـ URL
+      const encodedMessage = encodeURIComponent(message);
+
+      // أرقام WhatsApp
+      const whatsappNumbers = ['+212753375741', '+212693268013'];
+
+      // فتح الرقم الأول
+      window.open(`https://wa.me/${whatsappNumbers[0]}?text=${encodedMessage}`, '_blank');
+      
+      // إذا أردت، يمكنك فتح الرقم الثاني مباشرة أيضاً (غير مستحسن فتح نافذتين تلقائياً)
+      // window.open(`https://wa.me/${whatsappNumbers[1]}?text=${encodedMessage}`, '_blank');
+
+      // مسح السلة بعد الإرسال
+      cart = [];
+      localStorage.setItem('cart', JSON.stringify(cart));
+      renderCart();
+    });
+
+    // عند تحميل الصفحة
+    renderCart();
+  </script>
+
+</body>
+</html>

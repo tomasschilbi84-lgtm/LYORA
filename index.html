@@ -1,629 +1,285 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>ZAZAT PARFUM - عطور الفخامة والرقي</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
-<style>
-  :root{
-    --gold1:#ffea9f; --gold2:#e2b53f; --dark:#070707;
-    --muted:#bfbfbf;
-  }
-  *{box-sizing:border-box}
-  body{
-    margin:0;
-    font-family:"Playfair Display",serif;
-    background:var(--dark);
-    color:#eee;
-    min-height:100vh;
-  }
-
-  #sparkle-bg{
-    position:fixed; inset:0; z-index:-2;
-    background: radial-gradient(circle at 50% 20%, #0d0d0d 0%, #000 65%);
-  }
-  .sparkle{
-    position:absolute; background: radial-gradient(circle,#ffea9f,rgba(255,234,159,0));
-    border-radius:50%; opacity:0.8; pointer-events:none; animation: rise linear infinite;
-  }
-  @keyframes rise{ from{ transform:translateY(0); } to{ transform:translateY(-120vh) scale(.8); opacity:0; } }
-
-  .topbar{ background:rgba(0,0,0,0.4); color:var(--gold1); text-align:center; padding:10px; }
-  .welcome-marquee{ animation: marquee 12s linear infinite; display:inline-block; white-space:nowrap; font-weight:600; }
-  @keyframes marquee{0%{transform:translateX(100%);}100%{transform:translateX(-100%);}}
-
-  header{text-align:center; padding:18px;}
-  header h1{margin:0;font-size:30px;background:linear-gradient(45deg,var(--gold1),var(--gold2));
-  -webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-
-  .products{
-    display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-    gap:26px;max-width:1200px;margin:20px auto;padding:0 16px;
-  }
-  .card{
-    background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(0,0,0,0.35));
-    border-radius:14px;overflow:hidden;text-align:center;
-    box-shadow:0 10px 30px rgba(0,0,0,0.6);
-    transition:transform .3s;
-  }
-  .card:hover{transform:translateY(-10px);}
-  .card img{width:100%;height:320px;object-fit:cover;}
-  .title{color:var(--gold1);font-weight:700;margin-top:8px;}
-  .desc{color:var(--muted);font-size:0.95rem;padding:6px 10px;min-height:60px;}
-  .price{color:#fff;font-weight:800;margin:6px 0;}
-  .actions{display:flex;justify-content:center;gap:10px;margin-bottom:14px;}
-  .btn{padding:10px 14px;border-radius:8px;cursor:pointer;font-weight:700;border:none;}
-  .btn.detail{background:transparent;color:var(--gold1);border:1px solid rgba(226,181,63,0.15);}
-  .btn.buy{background:linear-gradient(45deg,var(--gold1),var(--gold2));color:#111;}
-
-  footer{text-align:center;padding:20px;color:var(--gold2);}
-</style>
-</head>
-
-<body>
-
-<div id="sparkle-bg"></div>
-
-<div class="topbar"><div class="welcome-marquee">✨ مرحبًا بكم في ZAZAT PARFUM – عطور الفخامة والرقي ✨</div></div>
-<header><h1>ZAZAT PARFUM</h1></header>
-
-<section class="products" id="products">
-
-  <!-- Oud Royal -->
-  <article class="card" data-name="Oud Royal">
-    <img src="oud-royal.jpg" alt="Oud Royal">
-    <div class="title">Oud Royal</div>
-    <div class="desc">عطر ملكي يجسّد جوهر الفخامة الشرقية. يمتزج فيه العود النقي بالعنبر والمسك الأبيض ليمنح حضورًا لا يُنسى.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-<!-- JEAN PAUL GAULTIER SCANDAL POUR HOMME -->
-<article class="card" data-name="JEAN PAUL GAULTIER SCANDAL POUR HOMME">
-    <img src="jean_paul_gaultier-scandal_homme-parfum-n1_2048x.webp" alt="JEAN PAUL GAULTIER SCANDAL POUR HOMME">
-    <div class="title">JEAN PAUL GAULTIER SCANDAL POUR HOMME</div>
-    <div class="desc">Scandal Pour Homme Jean Paul Gaultier للرجال ; الإفتتاحية. الماندرين (اليوسفي). المريمية ; قلب العطر. الكاراميل. حبوب التونكا ; المكونات الأساسية. نجيل الهند.
-.
-.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-<!-- JEAN PAUL -->
-<article class="card" data-name="JEAN PAUL">
-    <img src="e11a5eb5aa23a7f106ddebd797b0fa037895b914_176d55aa-a5b1-4049-8ef1-front.webp" alt="JEAN PAUL">
-    <div class="title">JEAN PAUL</div>
-    <div class="desc">جون بول شارل أيمارد سارتر (بالفرنسية: Jean-Paul Charles Aymard Sartre) (21 يونيو 1905 باريس - 15 أبريل 1980 باريس).
-.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
- <!-- Valentino pour femme -->
- <article class="card" data-name="Valentino pour femme">
-    <img src="born-in-roma-intense-donna.jpg" alt="Valentino pour femme">
-    <div class="title">Valentino pour femme</div>
-    <div class="desc">اختبر الجاذبية الجريئة للفانيليا والزنجبيل والحمضيات في عطر Born in Roma Uomo Eau de Parfumo Eau de Parfum Intense، الذي يستحضر حيوية غروب الشمس الروماني.
-.
-.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-<!-- Lacoste Blanc -->
-<article class="card" data-name="Lacoste Blanc">
-  <img src="lacost.jpg" alt="Lacoste Blanc">
-  <div class="title">Lacoste Blanc</div>
-  <div class="desc">عطر نقي بعبير الزهور والحمضيات يجسد الأناقة الرياضية والبساطة الفاخرة.</div>
-  <div class="price">50 درهم</div>
-  <div class="actions"><button class="btn buy">شراء الآن</button></div>
-</article>
-
-<!-- 9PM -->
-<article class="card" data-name="9PM Afnan">
-  <img src="9pm.webp" alt="9PM Afnan">
-  <div class="title">9PM Afnan</div>
-  <div class="desc">عطر دافئ يجمع الفانيليا والتفاح والعنبر بلمسة مغناطيسية تناسب السهرات.</div>
-  <div class="price">50 درهم</div>
-  <div class="actions"><button class="btn buy">شراء الآن</button></div>
-</article>
-
-<!-- Club de Nuit -->
-<article class="card" data-name="Club de Nuit Intense Man">
-  <img src="Decant-Club-de-Nuit-Intense-Man-Parfum-para-hombre-Arom_tica-CR-366557282.webp" alt="Club de Nuit Intense Man">
-  <div class="title">Club de Nuit Intense Man</div>
-  <div class="desc">عطر أسطوري مستوحى من Creed Aventus برائحة دخانية فاخرة تدوم طويلًا.</div>
-  <div class="price">50 درهم</div>
-  <div class="actions"><button class="btn buy">شراء الآن</button></div>
-</article>
-
- <!-- amouage -->
-<article class="card" data-name="amouage">
-    <img src="amouage-interlude-man-100-ml-original-tester-perfume-nakhoua-04.jpeg" alt="amouage">
-    <div class="title"> amouage</div>
-    <div class="desc">  أمواج هي ماركة ديال العطور الفاخرة من عُمان 🇴🇲، معروفة بروائحها القوية والراقية اللي كيدومو بزاف.
-العطور ديالهم كيعطيو إحساس ديال الفخامة، وكيتصاوبو من مكونات طبيعية بحال البخور، العنبر، والمسك..</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
- <!-- Bois Noir -->
- <article class="card" data-name="Bois Noir">
-    <img src="BOIS-NOIR-Photo-Prestige.webp" alt="Bois Noir">
-    <div class="title">Bois Noir</div>
-    <div class="desc">Le Bois Noir Fragrance World للجنسين ; الإفتتاحية. أخشاب الغاياك. خشب الأرز ; قلب العطر. خشب الصندل. الباتشولي ; المكونات الأساسية. اللابدانوم. الراتينجات.
-.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-<!-- scandal -->
-<article class="card" data-name="scandal">
-    <img src="jean-paul-gaultier-scandal-le-parfum-eau-de-parfum-n_2048x.webp" alt="scandal">
-    <div class="title">scandal</div>
-    <div class="desc">  قوي مستوحى من الطبيعة البرية، بمزيج البرغموت والفلفل واللافندر.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-  <!-- Armani Code Elixir -->
-  <article class="card" data-name="Armani Code Elixir">
-    <img src="armani-code.jpg" alt="Armani Code Elixir">
-    <div class="title">Armani Code Elixir</div>
-    <div class="desc">عطر أنيق للرجل العصري بنغمات اللافندر والباتشولي والأخشاب والعنبر.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-  <!-- Malak -->
-  <article class="card" data-name="Malak">
-    <img src="malak.jpg" alt="Malak">
-    <div class="title">Malak</div>
-    <div class="desc">تحفة عطرية بدون كحول بنفحات العود واليوسفي والتوابل، تعبّر عن الجاذبية وسحر الأصالة.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
- <!-- Delina Exclusif -->
-<article class="card" data-name="Delina Exclusif">
-        <img src="delina-exclusif-lifestyle-2_d7608c4b-faea-4906-b855-0beabb136c69_800x.webp" alt="عطر بارفان دي مارلي ديلينا إكسكلوسيف">
-        <div class="title">Parfums de Marly Delina Exclusif</div>
-        <div class="desc">🌹 ورد تركي غني مع لمسة من العود والبخور، مزيج فاخر وجريء لجاذبية آسرة.</div>
-        <div class="price">50 درهم</div>
-        <div class="actions">
-            <button class="btn detail">عرض التفاصيل</button>
-            <button class="btn buy">شراء الآن</button>
-        </div>
-    </article>
-
- <!-- Dior J'adore -->
-<article class="card" data-name="Dior J'adore">
-        <img src="dior-jadore-eau-de-parfum-100ml-la-jolie-perfumes04-600x590.jpeg" alt="عطر ديور جادور أو دو بارفان">
-        <div class="title">Dior J'adore Eau de Parfum</div>
-        <div class="desc">🌸 باقة زهور أيقونية من الإيلنغ والياسمين، رمز الأنوثة المطلقة والرقي الذهبي.</div>
-        <div class="price">50 درهم</div>
-        <div class="actions">
-            <button class="btn detail">عرض التفاصيل</button>
-            <button class="btn buy">شراء الآن</button>
-        </div>
-    </article>
-
-<!-- Le Male Elixir Absolu -->
-<article class="card" data-name="Le Male Elixir Absolu">
-        <img src="le-male-elixir-absolu___250224.webp" alt="عطر جان بول غوتييه لي ميل إلكسير أبسولو">
-        <div class="title">Le Male Elixir Absolu</div>
-        <div class="desc">✨ عطر شرقي عنبري دافئ برائحة اللافندر والفانيليا الساحرة، قوي ومكثف.</div>
-        <div class="price">50 درهم</div>
-        <div class="actions">
-            <button class="btn detail">عرض التفاصيل</button>
-            <button class="btn buy">شراء الآن</button>
-        </div>
-    </article>
-
-<!-- Jean Paul Gaultier La Belle -->
-<article class="card" data-name="Jean Paul Gaultier La Belle">
-        <img src="driyat.webp" alt="عطر جان بول غوتييه لا بيل">
-        <div class="title">Jean Paul Gaultier La Belle</div>
-        <div class="desc">🍐 مزيج شرقي من الكمثرى والفانيليا، يجسد الجاذبية والأنوثة في تصميم أيقوني.</div>
-        <div class="price">50 درهم</div>
-        <div class="actions">
-            <button class="btn detail">عرض التفاصيل</button>
-            <button class="btn buy">شراء الآن</button>
-        </div>
-    </article>
-
-<!-- Dior Homme -->
-<article class="card" data-name="Dior Homme">
-    <img src="nm_4955436_100000_c.webp" alt="Dior Homme">
-    <div class="title">Dior Homme</div>
-    <div class="desc">Dior Homme 2020 Dior للرجال ; الإفتتاحية. البرغموت. الفلفل الوردي. الإليمي ; قلب العطر. خشب الأرز الأطلسي. أخشاب الكشمير. الباتشولي.
-.
-.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-<!-- parada -->
-<article class="card" data-name="parada">
-    <img src="parada.webp" alt="parada">
-    <div class="title">parada</div>
-    <div class="desc"> تركيبه جميله جدا ونادره تمنحك رائحه جميله وطيبه ولطيفة بجوده عاليه وشعورا بالاناقه والسعاده يصنف هذا العطر.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-  <!-- Invictus Victory Elixir -->
-  <article class="card" data-name="Invictus Victory Elixir">
-    <img src="invictus-victory-elixir-parfum-intense-paco-rabanne.jpg" alt="Invictus Victory Elixir">
-    <div class="title">Invictus Victory Elixir</div>
-    <div class="desc">عطر رجولي مكثف بطابع شرقي دافئ يجمع بين الفانيليا واللبان والفلفل الأسود في تركيبة جذابة.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-  <!-- Bleu de Chanel -->
-  <article class="card" data-name="Bleu de Chanel">
-    <img src="Chanel-Bleu-Edp-For-Men-100ml-2_1000x.jpg" alt="Bleu de Chanel">
-    <div class="title">Bleu de Chanel</div>
-    <div class="desc">عطر راقٍ يجمع بين الحمضيات والخشب والعنبر ليعبر عن حرية وروح الرجل العصري.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-  <!-- poeme -->
- <article class="card" data-name="poeme">
-    <img src="poeme.webp" alt="poeme">
-    <div class="title">poeme</div>
-    <div class="desc"> عطر شرقي من الظل والضوء، يتميز Poême بفن التباين! تحدٍ حسي يندمج معك! باردة أو مشمسة، زرقاء أو صفراء، متوترة أو متراخية، تشكل عطر Poême شخصية شاعرية شمية!
-...
-.
-.
-.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-<!-- amirat arabe -->
-<article class="card" data-name="amirat arabe">
-    <img src="Captured_ecran2025-06-29a19.10.25.webp" alt="Dior amirat arabe">
-    <div class="title">amirat arabe</div>
-    <div class="desc"> قوي مستوحى من الطبيعة البرية، بمزيج البرغموت والفلفل واللافندر.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-<!-- Guerlain La Petite Robe Noire -->
-<article class="card" data-name="Guerlain La Petite Robe Noire">
-        <img src="la petite robe.jpg" alt="عطر جيرلان لا بيتيت روب نوار">
-        <div class="title">Guerlain La Petite Robe Noire</div>
-        <div class="desc">🍒 كرز أسود وحلوى اللوز مع لمسة من الشاي، عطر مرح وأنيق يجسد الأنوثة الباريسية.</div>
-        <div class="price">50 درهم</div>
-        <div class="actions">
-            <button class="btn detail">عرض التفاصيل</button>
-            <button class="btn buy">شراء الآن</button>
-        </div>
-    </article>
-
-<!-- FRENCH ROSE -->
- <article class="card" data-name="FRENCH ROSE">
-    <img src="FRENCH-ROSE-tower-1080.webp" alt="FRENCH ROSE">
-    <div class="title">FRENCH ROSE</div>
-    <div class="desc"يُعَدُّ عطر فرنش روز من كلايف وود 100 مل قصيدةً تأسر الحواس بأسلوبٍ ساحر. هذا العطر يمثل تركيبةً منعشة تحوي أزهار البرتقال المفعمة برائحة الرياحين، مع لمسة نارية تحفز...
-.
-.
-.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-  <!-- Elegance -->
-  <article class="card" data-name="ZAZAT Elegance">
-    <img src="8411061083673_2.jpg" alt="ZAZAT Elegance">
-    <div class="title">ZAZAT Elegance</div>
-    <div class="desc">عطر نسائي فخم بنفحات الزهور البيضاء والفانيليا والعنبر، يجسد الأنوثة والرقي الدائم.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-  <!-- Sauvage -->
-  <article class="card" data-name="Dior Sauvage">
-    <img src="sauvage.webp" alt="Dior Sauvage">
-    <div class="title">Dior Sauvage</div>
-    <div class="desc">عطر أسطوري من Dior يجمع بين البرغموت والفلفل واللافندر في مزيج منعش وقوي يعكس الرجولة الحقيقية.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-<!-- 1 Million -->
-<article class="card" data-name="1 Million">
-    <img src="10007701717022_480x.webp" alt="1 Million">
-    <div class="title">1 Million</div>
-    <div class="desc">دائمًا ارتكب الجريمة: المجرد كثير. 1 مليون العطر. عطر الجلد الشمسي مع تأثير المالحة ، دافئة على الجلد. رصيد دائم يعشق الذهب. عطر قوي للرجال. متجر عنيد.
-.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-  <!-- Stronger With You Oud -->
-  <article class="card" data-name="Stronger With You Oud">
-    <img src="stronger-with-you.jpg" alt="Stronger With You Oud">
-    <div class="title">Stronger With You Oud</div>
-    <div class="desc">عطر شرقي فاخر من Armani بنفحات العود والفانيليا والعنبر، مزيج من القوة والرقي في زجاجة واحدة.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-  <!-- Valentino Uomo Born in Roma -->
-  <article class="card" data-name="Valentino Uomo Born in Roma">
-    <img src="Valentino-Uomo-Born-In-Roma-Eau-de-Toilette-Spray_4.webp" alt="Valentino Uomo Born in Roma">
-    <div class="title">Valentino Uomo Born in Roma</div>
-    <div class="desc">عطر فاخر يجسد أسلوب الحياة الإيطالي العصري، بنفحات الفانيليا والفيتيفر والمريمية.</div>
-    <div class="price">50 درهم</div>
-    <div class="actions">
-      <button class="btn detail">عرض التفاصيل</button>
-      <button class="btn buy">شراء الآن</button>
-    </div>
-  </article>
-
-</section>
-
-<!-- social -->
-
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-<meta charset="utf-8" />
-<title>ZAZAT PARFUM Quiz Code</title>
-<style>
-    /* التنسيقات الأساسية (لتظهر الألوان بشكل صحيح) */
-    :root{
-        --gold1:#ffea9f; --gold2:#e2b53f; --dark:#070707;
-        --quiz-bg: #1a1a1a;
-    }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NOBLE PARFUMS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
     body {
-        font-family: Arial, sans-serif;
-        background: var(--dark);
-        color: #eee;
-        padding: 20px;
+      margin: 0;
+      background-color: #ffffff;
+      font-family: sans-serif;
     }
-    
-    /* تنسيقات المسابقة */
-    #quiz {
-        max-width: 600px;
-        margin: 50px auto;
-        padding: 30px;
-        background: var(--quiz-bg);
-        border-radius: 15px;
-        box-shadow: 0 0 40px rgba(226, 181, 63, 0.1);
-        text-align: right;
+
+    /* ================= Intro ================= */
+    #intro {
+      position: fixed;
+      inset: 0;
+      background: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      cursor: pointer;
+      overflow: hidden;
     }
-    #quiz h2 {
-        text-align: center;
-        color: var(--gold2);
-        margin-bottom: 25px;
+
+    #intro img, #intro video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
-    #quiz p {
-        font-size: 1.1em;
-        font-weight: 600;
-        margin-bottom: 15px;
+
+    #introVideo {
+      display: none;
     }
-    .options label {
-        display: block; 
-        margin-bottom: 12px; 
-        cursor: pointer;
-        background: #252525;
-        padding: 10px;
-        border-radius: 6px;
-        transition: background 0.2s;
+
+    /* ================= Main Content ================= */
+    #mainContent {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease;
     }
-    .options label:hover {
-        background: #333;
+    #mainContent.fade-in {
+      display: block;
+      opacity: 1;
     }
-    #quiz input[type="radio"] {
-        margin-left: 10px;
-        transform: scale(1.2); 
-        vertical-align: middle;
+
+    /* ================= Hero Section ================= */
+    .hero-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    #quiz button {
-        display: block;
-        width: 100%;
-        padding: 12px;
-        background: linear-gradient(90deg, var(--gold1), var(--gold2));
-        color: #111;
-        font-weight: 700;
-        border: none;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: opacity 0.3s;
+    .hero-logo {
+      height: 200px;
+      width: auto;
+      margin: 2rem 0;
     }
-    #quiz button:hover {
-        opacity: 0.9;
+    .hero-image {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      object-fit: cover;
     }
-    .result {
-        text-align: center;
-        margin-top: 20px;
-        padding: 10px;
-        border-radius: 8px;
-        font-weight: bold;
-        display: none; /* مخفي افتراضياً */
+
+    /* ================= Products ================= */
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: white;
+      border-radius: 1rem;
+      padding: 1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
     }
-    .result.success {
-        background: rgba(76, 175, 80, 0.2);
-        color: #4CAF50;
+    .product-card:hover { transform: translateY(-5px); }
+    .product-img { width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; }
+    .add-to-cart { margin-top: auto; background: #000; color: white; font-weight: bold; padding: 0.5rem; border-radius: 0.5rem; }
+    .add-to-cart:hover { background: #333; }
+    .cart-count {
+      position: absolute;
+      top: -6px;
+      left: -6px;
+      background: #f59e0b;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: bold;
+      width: 18px;
+      height: 18px;
+      border-radius: 9999px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-    .result.failure {
-        background: rgba(244, 67, 54, 0.2);
-        color: #f44336;
+
+    header {
+      background: white;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-</style>
+  </style>
 </head>
 <body>
 
-<section id="quiz">
-    <h2>🎉 مسابقة ZAZAT PARFUM! اربح خصم 10%!</h2>
-    
-    <form id="quizForm">
-        <p>السؤال: ما هي الفاكهة التي تمثل النوتة الافتتاحية الأساسية لعطر **Jean Paul Gaultier La Belle**؟</p>
-        
-        <div class="options">
-            <label>
-                <input type="radio" name="answerOption" value="تفاح" required />
-                التفاح الأحمر
-            </label>
-            <label>
-                <input type="radio" name="answerOption" value="كمثرى" />
-                الكمثرى (الإجاص)
-            </label>
-            <label>
-                <input type="radio" name="answerOption" value="برتقال" />
-                البرتقال المر
-            </label>
+  <!-- ================= Intro Full Screen ================= -->
+  <div id="intro">
+    <img id="introImage" src="poster.jpg" alt="Intro Poster">
+    <video id="introVideo" src="intro.mp4"></video>
+  </div>
+
+  <!-- ================= Main Content ================= -->
+  <div id="mainContent">
+    <header>
+      <input type="text" placeholder="ابحث عن عطر..." class="border rounded-lg px-2 py-1 text-sm w-40" id="search">
+      <div class="relative">
+        <a href="cart.html">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9" />
+          </svg>
+          <div id="cart-count" class="cart-count">0</div>
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <img src="logo.png" class="hero-logo" alt="Logo">
+      <img src="tasaw9 db.png" class="hero-image" alt="صورة كبيرة">
+    </section>
+
+    <!-- Products Grid -->
+    <section class="p-6 max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold mb-6 text-center">منتجاتنا</h2>
+      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6" id="products-grid">
+
+        <!-- ================= جميع العطور بسعر 49DH ================= -->
+        <div class="product-card" data-name="9pm" data-price="49" data-image="9pm.jfif">
+          <img src="9pm.jfif" class="product-img" alt="9pm">
+          <h3 class="font-bold mt-2">9pm</h3>
+          <p class="text-gray-600">عطر رجالي</p>
+          <p class="font-semibold mt-1">49DH</p>
+          <button class="add-to-cart">أضف إلى السلة</button>
         </div>
-        
-        <button type="submit">تحقق من الإجابة</button>
-    </form>
-    
-    <div id="quizResult" class="result"></div>
-</section>
-<script>
-    // 3. منطق المسابقة (QUIZ) - يفتح واتساب أوتوماتيكياً عند الإجابة الصحيحة
-    const quizForm = document.getElementById('quizForm');
-    const quizResult = document.getElementById('quizResult');
 
-    quizForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        
-        // الحصول على القيمة المحددة من أزرار الراديو
-        const selectedAnswer = document.querySelector('input[name="answerOption"]:checked');
-        
-        // الإجابة الصحيحة هي 'كمثرى' 
-        const isCorrect = selectedAnswer && selectedAnswer.value === "كمثرى";
-        
-        // عرض النتيجة
-        quizResult.style.display = 'block';
-        quizResult.classList.remove('success', 'failure');
+        <div class="product-card" data-name="lattafa khamrah" data-price="49" data-image="latafa.jfif">
+          <img src="latafa.jfif" class="product-img" alt="lattafa khamrah">
+          <h3 class="font-bold mt-2">lattafa khamrah</h3>
+          <p class="text-gray-600">عطر للجنسين</p>
+          <p class="font-semibold mt-1">49DH</p>
+          <button class="add-to-cart">أضف إلى السلة</button>
+        </div>
 
-        if (isCorrect) {
-            quizResult.classList.add('success');
-            quizResult.innerHTML = '🎉 إجابة صحيحة! سيتم نقلك الآن إلى واتساب للمطالبة بخصم 10%!';
-            
-            // **فتح واتساب أوتوماتيكياً**
-            const whatsappMessage = encodeURIComponent(`🎉 مرحبًا! لقد ربحت في مسابقة ZAZAT PARFUM! أرجو المطالبة بخصمي البالغ 10% على طلبي التالي.`);
-            // رقم الواتساب الخاص بالمتجر 212780591228
-            const whatsappUrl = `https://wa.me/212780591228?text=${whatsappMessage}`;
-            
-            window.open(whatsappUrl, '_blank'); 
-            
-            // لإعادة تعيين الخيارات بعد الإجابة الصحيحة
-            if (selectedAnswer) selectedAnswer.checked = false; 
-            
-        } else {
-            quizResult.classList.add('failure');
-            quizResult.innerHTML = '❌ إجابة خاطئة. اختر خيارًا آخر وحاول مجددًا!';
-        }
+        <div class="product-card" data-name="Kilian Paris" data-price="49" data-image="Kilian Paris.jfif">
+          <img src="Kilian Paris.jfif" class="product-img" alt="Kilian Paris">
+          <h3 class="font-bold mt-2">Kilian Paris</h3>
+          <p class="text-gray-600">عطر نسائي</p>
+          <p class="font-semibold mt-1">49DH</p>
+          <button class="add-to-cart">أضف إلى السلة</button>
+        </div>
+
+        <div class="product-card" data-name="Amber Musk" data-price="49" data-image="Amber Musk.jfif">
+          <img src="Amber Musk.jfif" class="product-img" alt="Amber Musk">
+          <h3 class="font-bold mt-2">Amber Musk</h3>
+          <p class="text-gray-600">عطر رجالي</p>
+          <p class="font-semibold mt-1">49DH</p>
+          <button class="add-to-cart">أضف إلى السلة</button>
+        </div>
+
+        <div class="product-card" data-name="Million Gold" data-price="49" data-image="milion.jfif">
+          <img src="milion.jfif" class="product-img" alt="Million Gold">
+          <h3 class="font-bold mt-2">Million Gold</h3>
+          <p class="text-gray-600">عطر رجالي</p>
+          <p class="font-semibold mt-1">49DH</p>
+          <button class="add-to-cart">أضف إلى السلة</button>
+        </div>
+
+        <div class="product-card" data-name="Worisando" data-price="49" data-image="worisando.jfif">
+          <img src="worisando.jfif" class="product-img" alt="Worisando">
+          <h3 class="font-bold mt-2">Worisando</h3>
+          <p class="text-gray-600">عطر رجالي</p>
+          <p class="font-semibold mt-1">49DH</p>
+          <button class="add-to-cart">أضف إلى السلة</button>
+        </div>
+
+        <div class="product-card" data-name="Stronger With You" data-price="49" data-image="stronger with you.jfif">
+          <img src="stronger with you.jfif" class="product-img" alt="Stronger With You">
+          <h3 class="font-bold mt-2">Stronger With You</h3>
+          <p class="text-gray-600">عطر رجالي</p>
+          <p class="font-semibold mt-1">49DH</p>
+          <button class="add-to-cart">أضف إلى السلة</button>
+        </div>
+
+        <div class="product-card" data-name="Lavender Mist" data-price="49" data-image="Lavender Mist.jfif">
+          <img src="Lavender Mist.jfif" class="product-img" alt="Lavender Mist">
+          <h3 class="font-bold mt-2">Lavender Mist</h3>
+          <p class="text-gray-600">عطر نسائي</p>
+          <p class="font-semibold mt-1">49DH</p>
+          <button class="add-to-cart">أضف إلى السلة</button>
+        </div>
+
+        <div class="product-card" data-name="Sandalwood" data-price="49" data-image="Sandalwood.jpg">
+          <img src="Sandalwood.jpg" class="product-img" alt="Sandalwood">
+          <h3 class="font-bold mt-2">Sandalwood</h3>
+          <p class="text-gray-600">عطر رجالي</p>
+          <p class="font-semibold mt-1">49DH</p>
+          <button class="add-to-cart">أضف إلى السلة</button>
+        </div>
+
+        <div class="product-card" data-name="Spicebomb Extreme Viktor&Rolf" data-price="49" data-image="Spicebomb Extreme Viktor&Rolf.jfif">
+          <img src="Spicebomb Extreme Viktor&Rolf.jfif" class="product-img" alt="Spicebomb Extreme Viktor&Rolf">
+          <h3 class="font-bold mt-2">Spicebomb Extreme Viktor&Rolf</h3>
+          <p class="text-gray-600">عطر رجالي</p>
+          <p class="font-semibold mt-1">49DH</p>
+          <button class="add-to-cart">أضف إلى السلة</button>
+        </div>
+
+      </div>
+    </section>
+  </div>
+
+  <!-- ================= Script ================= -->
+  <script>
+    const intro = document.getElementById('intro');
+    const introImage = document.getElementById('introImage');
+    const introVideo = document.getElementById('introVideo');
+    const mainContent = document.getElementById('mainContent');
+
+    introImage.addEventListener('click', () => {
+      introImage.style.display = 'none';
+      introVideo.style.display = 'block';
+      introVideo.play();
     });
-</script>
 
-</body>
-</html>
+    introVideo.addEventListener('ended', () => {
+      intro.style.display = 'none';
+      mainContent.classList.add('fade-in');
+    });
 
-<div class="social-fixed" style="position:fixed;left:20px;bottom:20px;display:flex;flex-direction:column;gap:12px;">
-  <a class="wh" href="https://wa.me/212693268013?text=مرحبًا، أريد معرفة المزيد عن عطور ZAZAT PARFUM" target="_blank" style="background:#25d366;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-  <a class="ig" href="https://www.instagram.com/zazat_parfum/" target="_blank" style="background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 45%, #d6249f 60%, #285AEB 90%);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;">
-    <i class="fab fa-instagram"></i>
-  </a>
-</div>
+    // --- إدارة السلة ---
+    const buttons = document.querySelectorAll('.add-to-cart');
+    const cartCount = document.getElementById('cart-count');
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
 
-<footer>© 2025 جميع الحقوق محفوظة لـ ZAZAT PARFUM</footer>
+    buttons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        const product = e.target.closest('.product-card');
+        const name = product.getAttribute('data-name');
+        const price = parseInt(product.getAttribute('data-price'));
+        const image = product.getAttribute('data-image');
+        const existing = cart.find(item => item.name === name);
+        if (existing) {
+          existing.quantity += 1;
+        } else {
+          cart.push({name, price, quantity: 1, image});
+        }
+        localStorage.setItem('cart', JSON.stringify(cart));
+        cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+      });
+    });
 
-<script>
-  const container = document.getElementById('sparkle-bg');
-  for(let i=0;i<40;i++){
-    const s=document.createElement('div');s.className='sparkle';
-    const size=2+Math.random()*5;
-    s.style.width=s.style.height=size+'px';
-    s.style.left=Math.random()*100+'%';
-    s.style.top=Math.random()*100+'%';
-    s.style.animationDuration=(8+Math.random()*14)+'s';
-    s.style.animationDelay=(-Math.random()*10)+'s';
-    s.style.opacity=0.35+Math.random()*0.65;
-    container.appendChild(s);
-  }
-
-  document.querySelectorAll('.btn.buy').forEach(btn=>{
-    btn.onclick=()=>{
-      const name=btn.closest('.card').dataset.name;
-      const url="https://wa.me/212780591228?text="+encodeURIComponent(`مرحبًا 👋، أود طلب عطر ${name} من ZAZAT PARFUM.`);
-      window.open(url,'_blank');
-    }
-  });
-</script>
-
+    // --- البحث التفاعلي ---
+    const searchInput = document.getElementById('search');
+    const products = document.querySelectorAll('#products-grid > .product-card');
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase().trim();
+      products.forEach(product => {
+        const name = product.getAttribute('data-name').toLowerCase();
+        product.style.display = name.includes(query) ? '' : 'none';
+      });
+    });
+  </script>
 </body>
 </html>

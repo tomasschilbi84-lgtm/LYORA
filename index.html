@@ -11,63 +11,17 @@
       background-color: #ffffff;
       font-family: sans-serif;
     }
-
-    /* ================= Intro ================= */
-    #intro {
-      position: fixed;
-      inset: 0;
-      background: black;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      cursor: pointer;
-      overflow: hidden;
-    }
-
-    #intro img, #intro video {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-
-    #introVideo {
-      display: none;
-    }
-
-    /* ================= Main Content ================= */
-    #mainContent {
-      display: none;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-    #mainContent.fade-in {
-      display: block;
-      opacity: 1;
-    }
-
-    /* ================= Hero Section ================= */
-    .hero-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
     .hero-logo {
-      height: 200px;
+      height: 120px;
       width: auto;
-      margin: 2rem 0;
+      margin: 1.5rem 0;
     }
     .hero-image {
       width: 100%;
-      max-width: 100%;
       height: auto;
-      object-fit: cover;
+      border-radius: 1rem;
+      margin-bottom: 1.5rem;
     }
-
-    /* ================= Products ================= */
     .product-card {
       display: flex;
       flex-direction: column;
@@ -75,13 +29,24 @@
       background: white;
       border-radius: 1rem;
       padding: 1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      transition: transform 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
     }
-    .product-card:hover { transform: translateY(-5px); }
-    .product-img { width: 100%; height: 200px; object-fit: cover; border-radius: 0.5rem; }
-    .add-to-cart { margin-top: auto; background: #000; color: white; font-weight: bold; padding: 0.5rem; border-radius: 0.5rem; }
+    .product-card:hover { transform: translateY(-3px); }
+    .product-img { width: 100%; height: 180px; object-fit: cover; border-radius: 0.5rem; }
+    .add-to-cart { margin-top: auto; background: #000; color: white; font-weight: bold; padding: 0.5rem; border-radius: 0.5rem; text-align: center; }
     .add-to-cart:hover { background: #333; }
+    header {
+      background: white;
+      padding: 0.8rem 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
     .cart-count {
       position: absolute;
       top: -6px;
@@ -97,161 +62,148 @@
       justify-content: center;
       align-items: center;
     }
-
-    header {
-      background: white;
-      padding: 1rem;
+    .bottom-cart {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      background: #000;
+      color: white;
+      padding: 0.75rem 1rem;
+      border-radius: 9999px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      gap: 0.5rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 100;
     }
   </style>
 </head>
 <body>
 
-  <!-- ================= Intro Full Screen ================= -->
-  <div id="intro">
-    <img id="introImage" src="poster.jpg" alt="Intro Poster">
-    <video id="introVideo" src="intro.mp4"></video>
-  </div>
+  <!-- Header -->
+  <header>
+    <input type="text" placeholder="ابحث عن عطر..." class="border rounded-lg px-2 py-1 text-sm w-40" id="search">
+    <div class="relative">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9" />
+      </svg>
+      <div id="cart-count" class="cart-count">0</div>
+    </div>
+  </header>
 
-  <!-- ================= Main Content ================= -->
-  <div id="mainContent">
-    <header>
-      <input type="text" placeholder="ابحث عن عطر..." class="border rounded-lg px-2 py-1 text-sm w-40" id="search">
-      <div class="relative">
-        <a href="cart.html">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9" />
-          </svg>
-          <div id="cart-count" class="cart-count">0</div>
-        </a>
+  <!-- Hero -->
+  <section class="px-4 text-center">
+    <img src="logo.png" class="hero-logo mx-auto" alt="Logo">
+    <img src="tasaw9 db.png" class="hero-image mx-auto" alt="صورة كبيرة">
+  </section>
+
+  <!-- Products Grid -->
+  <section class="p-4 max-w-6xl mx-auto">
+    <h2 class="text-2xl font-bold mb-4 text-center">منتجاتنا</h2>
+    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="products-grid">
+
+      <!-- جميع العطور -->
+      <div class="product-card" data-name="9pm" data-price="49" data-image="9pm.jfif">
+        <img src="9pm.jfif" class="product-img" alt="9pm">
+        <h3 class="font-bold mt-2">9pm</h3>
+        <p class="text-gray-600">عطر رجالي</p>
+        <p class="font-semibold mt-1">49DH</p>
+        <button class="add-to-cart">أضف إلى السلة</button>
       </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <img src="logo.png" class="hero-logo" alt="Logo">
-      <img src="tasaw9 db.png" class="hero-image" alt="صورة كبيرة">
-    </section>
-
-    <!-- Products Grid -->
-    <section class="p-6 max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold mb-6 text-center">منتجاتنا</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6" id="products-grid">
-
-        <!-- ================= جميع العطور بسعر 49DH ================= -->
-        <div class="product-card" data-name="9pm" data-price="49" data-image="9pm.jfif">
-          <img src="9pm.jfif" class="product-img" alt="9pm">
-          <h3 class="font-bold mt-2">9pm</h3>
-          <p class="text-gray-600">عطر رجالي</p>
-          <p class="font-semibold mt-1">49DH</p>
-          <button class="add-to-cart">أضف إلى السلة</button>
-        </div>
-
-        <div class="product-card" data-name="lattafa khamrah" data-price="49" data-image="latafa.jfif">
-          <img src="latafa.jfif" class="product-img" alt="lattafa khamrah">
-          <h3 class="font-bold mt-2">lattafa khamrah</h3>
-          <p class="text-gray-600">عطر للجنسين</p>
-          <p class="font-semibold mt-1">49DH</p>
-          <button class="add-to-cart">أضف إلى السلة</button>
-        </div>
-
-        <div class="product-card" data-name="Kilian Paris" data-price="49" data-image="Kilian Paris.jfif">
-          <img src="Kilian Paris.jfif" class="product-img" alt="Kilian Paris">
-          <h3 class="font-bold mt-2">Kilian Paris</h3>
-          <p class="text-gray-600">عطر نسائي</p>
-          <p class="font-semibold mt-1">49DH</p>
-          <button class="add-to-cart">أضف إلى السلة</button>
-        </div>
-
-        <div class="product-card" data-name="Amber Musk" data-price="49" data-image="Amber Musk.jfif">
-          <img src="Amber Musk.jfif" class="product-img" alt="Amber Musk">
-          <h3 class="font-bold mt-2">Amber Musk</h3>
-          <p class="text-gray-600">عطر رجالي</p>
-          <p class="font-semibold mt-1">49DH</p>
-          <button class="add-to-cart">أضف إلى السلة</button>
-        </div>
-
-        <div class="product-card" data-name="Million Gold" data-price="49" data-image="milion.jfif">
-          <img src="milion.jfif" class="product-img" alt="Million Gold">
-          <h3 class="font-bold mt-2">Million Gold</h3>
-          <p class="text-gray-600">عطر رجالي</p>
-          <p class="font-semibold mt-1">49DH</p>
-          <button class="add-to-cart">أضف إلى السلة</button>
-        </div>
-
-        <div class="product-card" data-name="Worisando" data-price="49" data-image="worisando.jfif">
-          <img src="worisando.jfif" class="product-img" alt="Worisando">
-          <h3 class="font-bold mt-2">Worisando</h3>
-          <p class="text-gray-600">عطر رجالي</p>
-          <p class="font-semibold mt-1">49DH</p>
-          <button class="add-to-cart">أضف إلى السلة</button>
-        </div>
-
-        <div class="product-card" data-name="Stronger With You" data-price="49" data-image="stronger with you.jfif">
-          <img src="stronger with you.jfif" class="product-img" alt="Stronger With You">
-          <h3 class="font-bold mt-2">Stronger With You</h3>
-          <p class="text-gray-600">عطر رجالي</p>
-          <p class="font-semibold mt-1">49DH</p>
-          <button class="add-to-cart">أضف إلى السلة</button>
-        </div>
-
-        <div class="product-card" data-name="Lavender Mist" data-price="49" data-image="Lavender Mist.jfif">
-          <img src="Lavender Mist.jfif" class="product-img" alt="Lavender Mist">
-          <h3 class="font-bold mt-2">Lavender Mist</h3>
-          <p class="text-gray-600">عطر نسائي</p>
-          <p class="font-semibold mt-1">49DH</p>
-          <button class="add-to-cart">أضف إلى السلة</button>
-        </div>
-
-        <div class="product-card" data-name="Sandalwood" data-price="49" data-image="Sandalwood.jpg">
-          <img src="Sandalwood.jpg" class="product-img" alt="Sandalwood">
-          <h3 class="font-bold mt-2">Sandalwood</h3>
-          <p class="text-gray-600">عطر رجالي</p>
-          <p class="font-semibold mt-1">49DH</p>
-          <button class="add-to-cart">أضف إلى السلة</button>
-        </div>
-
-        <div class="product-card" data-name="Spicebomb Extreme Viktor&Rolf" data-price="49" data-image="Spicebomb Extreme Viktor&Rolf.jfif">
-          <img src="Spicebomb Extreme Viktor&Rolf.jfif" class="product-img" alt="Spicebomb Extreme Viktor&Rolf">
-          <h3 class="font-bold mt-2">Spicebomb Extreme Viktor&Rolf</h3>
-          <p class="text-gray-600">عطر رجالي</p>
-          <p class="font-semibold mt-1">49DH</p>
-          <button class="add-to-cart">أضف إلى السلة</button>
-        </div>
-
+      <div class="product-card" data-name="lattafa khamrah" data-price="49" data-image="latafa.jfif">
+        <img src="latafa.jfif" class="product-img" alt="lattafa khamrah">
+        <h3 class="font-bold mt-2">lattafa khamrah</h3>
+        <p class="text-gray-600">عطر للجنسين</p>
+        <p class="font-semibold mt-1">49DH</p>
+        <button class="add-to-cart">أضف إلى السلة</button>
       </div>
-    </section>
-  </div>
 
-  <!-- ================= Script ================= -->
+      <div class="product-card" data-name="Kilian Paris" data-price="49" data-image="Kilian Paris.jfif">
+        <img src="Kilian Paris.jfif" class="product-img" alt="Kilian Paris">
+        <h3 class="font-bold mt-2">Kilian Paris</h3>
+        <p class="text-gray-600">عطر نسائي</p>
+        <p class="font-semibold mt-1">49DH</p>
+        <button class="add-to-cart">أضف إلى السلة</button>
+      </div>
+
+      <div class="product-card" data-name="Amber Musk" data-price="49" data-image="Amber Musk.jfif">
+        <img src="Amber Musk.jfif" class="product-img" alt="Amber Musk">
+        <h3 class="font-bold mt-2">Amber Musk</h3>
+        <p class="text-gray-600">عطر رجالي</p>
+        <p class="font-semibold mt-1">49DH</p>
+        <button class="add-to-cart">أضف إلى السلة</button>
+      </div>
+
+      <div class="product-card" data-name="Million Gold" data-price="49" data-image="milion.jfif">
+        <img src="milion.jfif" class="product-img" alt="Million Gold">
+        <h3 class="font-bold mt-2">Million Gold</h3>
+        <p class="text-gray-600">عطر رجالي</p>
+        <p class="font-semibold mt-1">49DH</p>
+        <button class="add-to-cart">أضف إلى السلة</button>
+      </div>
+
+      <div class="product-card" data-name="Worisando" data-price="49" data-image="worisando.jfif">
+        <img src="worisando.jfif" class="product-img" alt="Worisando">
+        <h3 class="font-bold mt-2">Worisando</h3>
+        <p class="text-gray-600">عطر رجالي</p>
+        <p class="font-semibold mt-1">49DH</p>
+        <button class="add-to-cart">أضف إلى السلة</button>
+      </div>
+
+      <div class="product-card" data-name="Stronger With You" data-price="49" data-image="stronger with you.jfif">
+        <img src="stronger with you.jfif" class="product-img" alt="Stronger With You">
+        <h3 class="font-bold mt-2">Stronger With You</h3>
+        <p class="text-gray-600">عطر رجالي</p>
+        <p class="font-semibold mt-1">49DH</p>
+        <button class="add-to-cart">أضف إلى السلة</button>
+      </div>
+
+      <div class="product-card" data-name="Lavender Mist" data-price="49" data-image="Lavender Mist.jfif">
+        <img src="Lavender Mist.jfif" class="product-img" alt="Lavender Mist">
+        <h3 class="font-bold mt-2">Lavender Mist</h3>
+        <p class="text-gray-600">عطر نسائي</p>
+        <p class="font-semibold mt-1">49DH</p>
+        <button class="add-to-cart">أضف إلى السلة</button>
+      </div>
+
+      <div class="product-card" data-name="Sandalwood" data-price="49" data-image="Sandalwood.jpg">
+        <img src="Sandalwood.jpg" class="product-img" alt="Sandalwood">
+        <h3 class="font-bold mt-2">Sandalwood</h3>
+        <p class="text-gray-600">عطر رجالي</p>
+        <p class="font-semibold mt-1">49DH</p>
+        <button class="add-to-cart">أضف إلى السلة</button>
+      </div>
+
+      <div class="product-card" data-name="Spicebomb Extreme Viktor&Rolf" data-price="49" data-image="Spicebomb Extreme Viktor&Rolf.jfif">
+        <img src="Spicebomb Extreme Viktor&Rolf.jfif" class="product-img" alt="Spicebomb Extreme Viktor&Rolf">
+        <h3 class="font-bold mt-2">Spicebomb Extreme Viktor&Rolf</h3>
+        <p class="text-gray-600">عطر رجالي</p>
+        <p class="font-semibold mt-1">49DH</p>
+        <button class="add-to-cart">أضف إلى السلة</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Bottom Cart -->
+  <a href="cart.html" class="bottom-cart">
+    <span>السلة</span>
+    <div id="bottom-cart-count" class="cart-count">0</div>
+  </a>
+
+  <!-- Script -->
   <script>
-    const intro = document.getElementById('intro');
-    const introImage = document.getElementById('introImage');
-    const introVideo = document.getElementById('introVideo');
-    const mainContent = document.getElementById('mainContent');
-
-    introImage.addEventListener('click', () => {
-      introImage.style.display = 'none';
-      introVideo.style.display = 'block';
-      introVideo.play();
-    });
-
-    introVideo.addEventListener('ended', () => {
-      intro.style.display = 'none';
-      mainContent.classList.add('fade-in');
-    });
-
-    // --- إدارة السلة ---
     const buttons = document.querySelectorAll('.add-to-cart');
     const cartCount = document.getElementById('cart-count');
+    const bottomCartCount = document.getElementById('bottom-cart-count');
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const updateCart = () => {
+      const total = cart.reduce((sum, item) => sum + item.quantity, 0);
+      cartCount.textContent = total;
+      bottomCartCount.textContent = total;
+    };
+    updateCart();
 
     buttons.forEach(button => {
       button.addEventListener('click', (e) => {
@@ -266,11 +218,10 @@
           cart.push({name, price, quantity: 1, image});
         }
         localStorage.setItem('cart', JSON.stringify(cart));
-        cartCount.textContent = cart.reduce((sum, item) => sum + item.quantity, 0);
+        updateCart();
       });
     });
 
-    // --- البحث التفاعلي ---
     const searchInput = document.getElementById('search');
     const products = document.querySelectorAll('#products-grid > .product-card');
     searchInput.addEventListener('input', () => {
@@ -281,5 +232,6 @@
       });
     });
   </script>
+
 </body>
 </html>

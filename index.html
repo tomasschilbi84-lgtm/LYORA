@@ -1,237 +1,123 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NOBLE PARFUMS</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body {
-      margin: 0;
-      background-color: #ffffff;
-      font-family: sans-serif;
-    }
-    .hero-logo {
-      height: 120px;
-      width: auto;
-      margin: 1.5rem 0;
-    }
-    .hero-image {
-      width: 100%;
-      height: auto;
-      border-radius: 1rem;
-      margin-bottom: 1.5rem;
-    }
-    .product-card {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      background: white;
-      border-radius: 1rem;
-      padding: 1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      transition: transform 0.2s;
-    }
-    .product-card:hover { transform: translateY(-3px); }
-    .product-img { width: 100%; height: 180px; object-fit: cover; border-radius: 0.5rem; }
-    .add-to-cart { margin-top: auto; background: #000; color: white; font-weight: bold; padding: 0.5rem; border-radius: 0.5rem; text-align: center; }
-    .add-to-cart:hover { background: #333; }
-    header {
-      background: white;
-      padding: 0.8rem 1rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    }
-    .cart-count {
-      position: absolute;
-      top: -6px;
-      left: -6px;
-      background: #f59e0b;
-      color: white;
-      font-size: 0.75rem;
-      font-weight: bold;
-      width: 18px;
-      height: 18px;
-      border-radius: 9999px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .bottom-cart {
-      position: fixed;
-      bottom: 1rem;
-      right: 1rem;
-      background: #000;
-      color: white;
-      padding: 0.75rem 1rem;
-      border-radius: 9999px;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      z-index: 100;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LYORA FRAGRANCE</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  .filter-btn{
+    border:1px solid black;
+    padding:8px 18px;
+    border-radius:999px;
+    font-weight:bold;
+    transition:0.3s;
+  }
+  .filter-btn:hover{
+    background:black;
+    color:white;
+  }
+</style>
 </head>
-<body>
 
-  <!-- Header -->
-  <header>
-    <input type="text" placeholder="ابحث عن عطر..." class="border rounded-lg px-2 py-1 text-sm w-40" id="search">
-    <div class="relative">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9" />
-      </svg>
-      <div id="cart-count" class="cart-count">0</div>
-    </div>
-  </header>
+<body class="bg-white text-black font-sans">
 
-  <!-- Hero -->
-  <section class="px-4 text-center">
-    <img src="logo.png" class="hero-logo mx-auto" alt="Logo">
-    <img src="tasaw9 db.png" class="hero-image mx-auto" alt="صورة كبيرة">
-  </section>
+<!-- ===== LOGO ===== -->
+<div class="flex justify-center py-8">
+  <img src="images/logo.png" alt="LYORA" class="w-[260px] md:w-[320px]">
+</div>
 
-  <!-- Products Grid -->
-  <section class="p-4 max-w-6xl mx-auto">
-    <h2 class="text-2xl font-bold mb-4 text-center">منتجاتنا</h2>
-    <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" id="products-grid">
+<!-- ===== HERO IMAGE ===== -->
+<div class="w-full">
+  <img src="images/hero.jpg" class="w-full h-[340px] md:h-[550px] object-cover">
+</div>
 
-      <!-- جميع العطور -->
-      <div class="product-card" data-name="9pm" data-price="49" data-image="9pm.jfif">
-        <img src="9pm.jfif" class="product-img" alt="9pm">
-        <h3 class="font-bold mt-2">9pm</h3>
-        <p class="text-gray-600">عطر رجالي</p>
-        <p class="font-semibold mt-1">49DH</p>
-        <button class="add-to-cart">أضف إلى السلة</button>
+<!-- ===== FILTER ===== -->
+<div class="flex justify-center gap-3 mt-10">
+  <button onclick="filterProducts('all')" class="filter-btn">الكل</button>
+  <button onclick="filterProducts('men')" class="filter-btn">رجالي</button>
+  <button onclick="filterProducts('women')" class="filter-btn">نسائي</button>
+</div>
+
+<!-- ===== PRODUCTS ===== -->
+<div id="products"
+class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 p-5 mt-8 max-w-7xl mx-auto">
+</div>
+
+<!-- ===== CART BUTTON ===== -->
+<a href="cart.html"
+class="fixed bottom-6 left-6 bg-black text-white px-6 py-3 rounded-full shadow-lg text-lg">
+🛒 السلة
+</a>
+
+<script>
+const PRICE = 49;
+
+// جميع المنتجات مع صور حقيقية
+const products = [
+ {name:"9PM", cat:"men", img:"images/9pm.jfif"},
+ {name:"Khamrah", cat:"women", img:"images/latafa.jfif"},
+ {name:"Kilian Paris", cat:"women", img:"images/Kilian Paris.jfif"},
+ {name:"Amber Musk", cat:"men", img:"images/Amber Musk.jfif"},
+ {name:"1 Million", cat:"men", img:"images/milion.jfif"},
+ {name:"Good Girl", cat:"women", img:"images/goodgirl.jpg"},
+ {name:"Libre", cat:"women", img:"images/libre.jpg"},
+ {name:"Sauvage", cat:"men", img:"images/sauvage.jpg"},
+ {name:"Bleu De Chanel", cat:"men", img:"images/bleu.jpg"},
+ {name:"YSL Y", cat:"men", img:"images/ysly.jpg"},
+ {name:"Black Opium", cat:"women", img:"images/blackopium.jpg"},
+ {name:"Scandal", cat:"women", img:"images/scandal.jpg"},
+ {name:"Oud Wood", cat:"men", img:"images/oudwood.jpg"},
+ {name:"Stronger With You", cat:"men", img:"images/stronger with you.jfif"},
+ {name:"La Vie Est Belle", cat:"women", img:"images/lavie.jpg"},
+ {name:"Chance Chanel", cat:"women", img:"images/chance.jpg"},
+ {name:"Invictus", cat:"men", img:"images/invictus.jpg"},
+ {name:"Alien", cat:"women", img:"images/alien.jpg"},
+ {name:"Eros Versace", cat:"men", img:"images/eros.jpg"},
+ {name:"CK One", cat:"men", img:"images/ckone.jpg"}
+];
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const container = document.getElementById("products");
+
+// عرض المنتجات
+function renderProducts(list){
+  container.innerHTML="";
+  list.forEach(p=>{
+    container.innerHTML += `
+    <div class="border rounded-2xl overflow-hidden hover:shadow-xl transition bg-white">
+      <img src="${p.img}" class="w-full h-44 object-cover">
+      <div class="p-4 text-center">
+        <h3 class="font-bold text-lg">${p.name}</h3>
+        <p class="font-semibold mt-1">${PRICE} DH</p>
+        <button onclick="addToCart('${p.name}')"
+        class="bg-black text-white w-full py-2 mt-3 rounded-xl hover:bg-gray-800 transition">
+          أضف إلى السلة
+        </button>
       </div>
+    </div>`;
+  });
+}
 
-      <div class="product-card" data-name="lattafa khamrah" data-price="49" data-image="latafa.jfif">
-        <img src="latafa.jfif" class="product-img" alt="lattafa khamrah">
-        <h3 class="font-bold mt-2">lattafa khamrah</h3>
-        <p class="text-gray-600">عطر للجنسين</p>
-        <p class="font-semibold mt-1">49DH</p>
-        <button class="add-to-cart">أضف إلى السلة</button>
-      </div>
+// فلترة المنتجات
+function filterProducts(type){
+  if(type === "all") renderProducts(products);
+  else renderProducts(products.filter(p => p.cat === type));
+}
 
-      <div class="product-card" data-name="Kilian Paris" data-price="49" data-image="Kilian Paris.jfif">
-        <img src="Kilian Paris.jfif" class="product-img" alt="Kilian Paris">
-        <h3 class="font-bold mt-2">Kilian Paris</h3>
-        <p class="text-gray-600">عطر نسائي</p>
-        <p class="font-semibold mt-1">49DH</p>
-        <button class="add-to-cart">أضف إلى السلة</button>
-      </div>
+// إضافة إلى السلة
+function addToCart(name){
+  const item = cart.find(i => i.name === name);
+  if(item) item.quantity++;
+  else cart.push({name:name, price:PRICE, quantity:1});
+  localStorage.setItem("cart", JSON.stringify(cart));
+  alert("تمت الإضافة إلى السلة 🛒");
+}
 
-      <div class="product-card" data-name="Amber Musk" data-price="49" data-image="Amber Musk.jfif">
-        <img src="Amber Musk.jfif" class="product-img" alt="Amber Musk">
-        <h3 class="font-bold mt-2">Amber Musk</h3>
-        <p class="text-gray-600">عطر رجالي</p>
-        <p class="font-semibold mt-1">49DH</p>
-        <button class="add-to-cart">أضف إلى السلة</button>
-      </div>
-
-      <div class="product-card" data-name="Million Gold" data-price="49" data-image="milion.jfif">
-        <img src="milion.jfif" class="product-img" alt="Million Gold">
-        <h3 class="font-bold mt-2">Million Gold</h3>
-        <p class="text-gray-600">عطر رجالي</p>
-        <p class="font-semibold mt-1">49DH</p>
-        <button class="add-to-cart">أضف إلى السلة</button>
-      </div>
-
-      <div class="product-card" data-name="Worisando" data-price="49" data-image="worisando.jfif">
-        <img src="worisando.jfif" class="product-img" alt="Worisando">
-        <h3 class="font-bold mt-2">Worisando</h3>
-        <p class="text-gray-600">عطر رجالي</p>
-        <p class="font-semibold mt-1">49DH</p>
-        <button class="add-to-cart">أضف إلى السلة</button>
-      </div>
-
-      <div class="product-card" data-name="Stronger With You" data-price="49" data-image="stronger with you.jfif">
-        <img src="stronger with you.jfif" class="product-img" alt="Stronger With You">
-        <h3 class="font-bold mt-2">Stronger With You</h3>
-        <p class="text-gray-600">عطر رجالي</p>
-        <p class="font-semibold mt-1">49DH</p>
-        <button class="add-to-cart">أضف إلى السلة</button>
-      </div>
-
-      <div class="product-card" data-name="Lavender Mist" data-price="49" data-image="Lavender Mist.jfif">
-        <img src="Lavender Mist.jfif" class="product-img" alt="Lavender Mist">
-        <h3 class="font-bold mt-2">Lavender Mist</h3>
-        <p class="text-gray-600">عطر نسائي</p>
-        <p class="font-semibold mt-1">49DH</p>
-        <button class="add-to-cart">أضف إلى السلة</button>
-      </div>
-
-      <div class="product-card" data-name="Sandalwood" data-price="49" data-image="Sandalwood.jpg">
-        <img src="Sandalwood.jpg" class="product-img" alt="Sandalwood">
-        <h3 class="font-bold mt-2">Sandalwood</h3>
-        <p class="text-gray-600">عطر رجالي</p>
-        <p class="font-semibold mt-1">49DH</p>
-        <button class="add-to-cart">أضف إلى السلة</button>
-      </div>
-
-      <div class="product-card" data-name="Spicebomb Extreme Viktor&Rolf" data-price="49" data-image="Spicebomb Extreme Viktor&Rolf.jfif">
-        <img src="Spicebomb Extreme Viktor&Rolf.jfif" class="product-img" alt="Spicebomb Extreme Viktor&Rolf">
-        <h3 class="font-bold mt-2">Spicebomb Extreme Viktor&Rolf</h3>
-        <p class="text-gray-600">عطر رجالي</p>
-        <p class="font-semibold mt-1">49DH</p>
-        <button class="add-to-cart">أضف إلى السلة</button>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Bottom Cart -->
-  <a href="cart.html" class="bottom-cart">
-    <span>السلة</span>
-    <div id="bottom-cart-count" class="cart-count">0</div>
-  </a>
-
-  <!-- Script -->
-  <script>
-    const buttons = document.querySelectorAll('.add-to-cart');
-    const cartCount = document.getElementById('cart-count');
-    const bottomCartCount = document.getElementById('bottom-cart-count');
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const updateCart = () => {
-      const total = cart.reduce((sum, item) => sum + item.quantity, 0);
-      cartCount.textContent = total;
-      bottomCartCount.textContent = total;
-    };
-    updateCart();
-
-    buttons.forEach(button => {
-      button.addEventListener('click', (e) => {
-        const product = e.target.closest('.product-card');
-        const name = product.getAttribute('data-name');
-        const price = parseInt(product.getAttribute('data-price'));
-        const image = product.getAttribute('data-image');
-        const existing = cart.find(item => item.name === name);
-        if (existing) {
-          existing.quantity += 1;
-        } else {
-          cart.push({name, price, quantity: 1, image});
-        }
-        localStorage.setItem('cart', JSON.stringify(cart));
-        updateCart();
-      });
-    });
-
-    const searchInput = document.getElementById('search');
-    const products = document.querySelectorAll('#products-grid > .product-card');
-    searchInput.addEventListener('input', () => {
-      const query = searchInput.value.toLowerCase().trim();
-      products.forEach(product => {
-        const name = product.getAttribute('data-name').toLowerCase();
-        product.style.display = name.includes(query) ? '' : 'none';
-      });
-    });
-  </script>
+// عرض جميع المنتجات عند التحميل
+renderProducts(products);
+</script>
 
 </body>
 </html>

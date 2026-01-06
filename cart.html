@@ -1,154 +1,138 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>سلة التسوق - NOBLE PARFUMS</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سلة التسوق - LYORA FRAGRANCE</title>
+<script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-gray-100 font-sans">
 
-  <!-- ================= العنوان وعودة للمتجر ================= -->
-  <div class="max-w-6xl mx-auto p-4">
+<body class="bg-gray-50 font-sans">
 
-    <!-- عداد السلة -->
-    <div class="flex justify-between items-center mb-4">
-      <a href="index.html" class="text-gray-700 hover:text-gray-900 font-semibold">&larr; العودة للمتجر</a>
-      <div class="relative">
-        <a href="cart.html">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2 9m5-9v9m4-9v9m4-9l2 9" />
-          </svg>
-          <div id="cart-count" class="absolute -top-2 -left-2 bg-yellow-500 text-white text-sm font-bold w-5 h-5 flex items-center justify-center rounded-full">0</div>
-        </a>
-      </div>
+<div class="max-w-3xl mx-auto p-4">
+  <a href="index.html" class="inline-block text-gray-700 hover:text-gray-900 mb-6 font-semibold">
+    ⬅️ العودة للمتجر
+  </a>
+
+  <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">سلة التسوق</h1>
+
+  <!-- ===== عرض عناصر السلة ===== -->
+  <div id="items" class="space-y-3 mb-6"></div>
+
+  <!-- ===== نموذج معلومات العميل ===== -->
+  <div class="bg-white p-6 rounded-xl shadow space-y-4">
+    <input id="name" placeholder="الاسم الكامل" class="w-full border border-gray-300 p-3 rounded focus:ring-2 focus:ring-yellow-500">
+    <input id="phone" placeholder="رقم الهاتف" class="w-full border border-gray-300 p-3 rounded focus:ring-2 focus:ring-yellow-500">
+    <textarea id="address" placeholder="العنوان الكامل" class="w-full border border-gray-300 p-3 rounded focus:ring-2 focus:ring-yellow-500"></textarea>
+
+    <div class="p-3 border border-gray-300 rounded text-green-700 font-semibold">
+      🚚 التوصيل: مجاني
     </div>
-
-    <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">سلة التسوق</h1>
-
-    <!-- ================= السلة ================= -->
-    <div id="cart-items" class="space-y-4">
-      <!-- المنتجات ستظهر هنا -->
-    </div>
-
-    <!-- الإجمالي -->
-    <div class="mt-6 text-right text-xl font-bold text-gray-700" id="cart-total">
-      الإجمالي: 0dh
-    </div>
-
-    <!-- زر الشراء -->
-    <div class="mt-4 text-right">
-      <button id="checkout-btn" class="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-2 rounded-lg font-semibold transition">
-        شراء الآن
-      </button>
-    </div>
-
   </div>
 
-  <!-- ================= سكريبت السلة ================= -->
-  <script>
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+  <!-- ===== إجمالي الطلب + زر WhatsApp ===== -->
+  <div class="mt-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+    <div id="total" class="text-xl font-bold text-gray-800">الإجمالي: 0DH</div>
+    <button onclick="checkout()"
+      class="w-full sm:w-auto bg-yellow-500 hover:bg-yellow-600 text-white py-3 px-6 rounded-xl font-bold transition shadow-lg">
+      إتمام الشراء عبر WhatsApp
+    </button>
+  </div>
+</div>
 
-    const cartItemsDiv = document.getElementById('cart-items');
-    const cartTotalDiv = document.getElementById('cart-total');
-    const cartCountDiv = document.getElementById('cart-count');
+<script>
+// ===== استدعاء السلة من LocalStorage =====
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const items = document.getElementById("items");
+const totalDiv = document.getElementById("total");
 
-    function renderCart() {
-      cartItemsDiv.innerHTML = '';
-      if (cart.length === 0) {
-        cartItemsDiv.innerHTML = '<p class="text-center text-gray-500">السلة فارغة</p>';
-        cartTotalDiv.textContent = 'الإجمالي: 0dh';
-        cartCountDiv.textContent = 0;
-        return;
-      }
+// ===== عرض السلة =====
+function render() {
+  if(cart.length === 0){
+    items.innerHTML = `<p class="text-center text-gray-500 text-lg">السلة فارغة</p>`;
+    totalDiv.textContent = "الإجمالي: 0DH";
+    return;
+  }
 
-      let total = 0;
-      let count = 0;
+  let html = "";
+  let total = 0;
 
-      cart.forEach((item, index) => {
-        total += item.price * item.quantity;
-        count += item.quantity;
-
-        const div = document.createElement('div');
-        div.className = 'bg-white p-4 rounded-lg shadow flex flex-col sm:flex-row items-center justify-between';
-        div.innerHTML = `
-          <div class="flex items-center w-full sm:w-2/3 mb-4 sm:mb-0">
-            <img src="${item.image || 'tasaw9 db.png'}" alt="${item.name}" class="w-20 h-20 object-cover rounded-lg ml-4">
-            <div>
-              <h3 class="font-bold text-gray-800">${item.name}</h3>
-              <p class="text-gray-600">${item.price}dh</p>
-            </div>
+  cart.forEach((c, index) => {
+    html += `
+      <div class="bg-white p-4 rounded-xl shadow flex justify-between items-center">
+        <div class="flex items-center gap-4">
+          <img src="${c.image || 'images/perfume.jpg'}" class="w-20 h-20 object-cover rounded-lg">
+          <div>
+            <h3 class="font-bold text-gray-800">${c.name}</h3>
+            <p class="text-gray-600">${c.price} DH × ${c.quantity}</p>
           </div>
-          <div class="flex items-center space-x-2 space-x-reverse w-full sm:w-1/3 justify-end">
-            <input type="number" min="1" value="${item.quantity}" class="quantity-input border rounded px-2 py-1 w-16 text-center" data-index="${index}">
-            <button class="remove-btn bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition" data-index="${index}">حذف</button>
-          </div>
-        `;
-        cartItemsDiv.appendChild(div);
-      });
+        </div>
+        <div class="flex flex-col items-end gap-2">
+          <div class="font-semibold text-gray-800">${c.price * c.quantity} DH</div>
+          <button onclick="removeItem(${index})" class="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded transition">
+            إزالة
+          </button>
+        </div>
+      </div>
+    `;
+    total += c.price * c.quantity;
+  });
 
-      cartTotalDiv.textContent = `الإجمالي: ${total}dh`;
-      cartCountDiv.textContent = count;
-    }
+  items.innerHTML = html;
+  totalDiv.textContent = `الإجمالي: ${total}DH`;
+}
 
-    // تعديل الكمية
-    cartItemsDiv.addEventListener('input', (e) => {
-      if (e.target.classList.contains('quantity-input')) {
-        const index = e.target.getAttribute('data-index');
-        const val = parseInt(e.target.value);
-        if (val > 0) {
-          cart[index].quantity = val;
-          localStorage.setItem('cart', JSON.stringify(cart));
-          renderCart();
-        }
-      }
-    });
+// ===== إزالة منتج من السلة =====
+function removeItem(index){
+  cart.splice(index, 1);
+  localStorage.setItem("cart", JSON.stringify(cart));
+  render();
+}
 
-    // حذف المنتج
-    cartItemsDiv.addEventListener('click', (e) => {
-      if (e.target.classList.contains('remove-btn')) {
-        const index = e.target.getAttribute('data-index');
-        cart.splice(index, 1);
-        localStorage.setItem('cart', JSON.stringify(cart));
-        renderCart();
-      }
-    });
+// ===== Checkout عبر WhatsApp =====
+function checkout() {
+  const nameEl = document.getElementById("name");
+  const phoneEl = document.getElementById("phone");
+  const addressEl = document.getElementById("address");
 
-    // زر الشراء يفتح WhatsApp برقمين
-    document.getElementById('checkout-btn').addEventListener('click', () => {
-      if (cart.length === 0) {
-        alert('السلة فارغة!');
-        return;
-      }
+  const name = nameEl.value.trim();
+  const phone = phoneEl.value.trim();
+  const address = addressEl.value.trim();
 
-      // صياغة رسالة WhatsApp
-      let message = 'مرحباً، أود شراء المنتجات التالية:\n';
-      cart.forEach(item => {
-        message += `- ${item.name} x ${item.quantity} = ${item.price * item.quantity}dh\n`;
-      });
-      message += `الإجمالي: ${cart.reduce((sum, item) => sum + item.price * item.quantity, 0)}dh`;
+  if(!name || !phone || !address){
+    return alert("يرجى تعبئة جميع الحقول 🔴");
+  }
 
-      // ترميز الرسالة للـ URL
-      const encodedMessage = encodeURIComponent(message);
+  if(cart.length === 0){
+    return alert("السلة فارغة 🛒");
+  }
 
-      // أرقام WhatsApp
-      const whatsappNumbers = ['+212693268013', '+212693268013'];
+  let total = 0;
+  let msg = `🛍️ طلب جديد%0A👤 الاسم: ${name}%0A📞 الهاتف: ${phone}%0A📍 العنوان: ${address}%0A🚚 التوصيل: مجاني%0A`;
 
-      // فتح الرقم الأول
-      window.open(`https://wa.me/${whatsappNumbers[0]}?text=${encodedMessage}`, '_blank');
-      
-      // إذا أردت، يمكنك فتح الرقم الثاني مباشرة أيضاً (غير مستحسن فتح نافذتين تلقائياً)
-      // window.open(`https://wa.me/${whatsappNumbers[1]}?text=${encodedMessage}`, '_blank');
+  cart.forEach(c => {
+    msg += `• ${c.name} x${c.quantity}%0A`;
+    total += c.price * c.quantity;
+  });
 
-      // مسح السلة بعد الإرسال
-      cart = [];
-      localStorage.setItem('cart', JSON.stringify(cart));
-      renderCart();
-    });
+  msg += `💰 المجموع الكلي: ${total}DH`;
 
-    // عند تحميل الصفحة
-    renderCart();
-  </script>
+  // حفظ الطلب للـ Dashboard
+  const orders = JSON.parse(localStorage.getItem("orders")) || [];
+  orders.push({name, phone, address, cart, total: total, date: new Date().toLocaleString()});
+  localStorage.setItem("orders", JSON.stringify(orders));
+
+  // فتح WhatsApp مع الرسالة
+  window.open(`https://wa.me/212693268013?text=${msg}`, "_blank");
+
+  // مسح السلة بعد الإرسال
+  localStorage.removeItem("cart");
+  render();
+}
+
+// عرض السلة عند التحميل
+render();
+</script>
 
 </body>
 </html>

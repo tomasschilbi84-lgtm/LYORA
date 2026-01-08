@@ -25,22 +25,22 @@
 
 <!-- ===== LOGO ===== -->
 <div class="flex justify-center py-8">
-  <img src="images/logo.png" alt="LYORA" class="w-[260px] md:w-[320px]">
+  <img src="images/logo.png" alt="LYORA" class="w-[300px] md:w-[350px]">
 </div>
 
 <!-- ===== HERO IMAGE ===== -->
 <div class="w-full">
-  <img src="images/hero.jpg" class="w-full h-[340px] md:h-[550px] object-cover">
+  <img src="images/hero.jpg" class="w-full h-[400px] md:h-[550px] object-cover">
 </div>
 
-<!-- ===== FILTER ===== -->
+<!-- ===== FILTER BUTTONS ===== -->
 <div class="flex justify-center gap-3 mt-10">
   <button onclick="filterProducts('all')" class="filter-btn">الكل</button>
   <button onclick="filterProducts('men')" class="filter-btn">رجالي</button>
   <button onclick="filterProducts('women')" class="filter-btn">نسائي</button>
 </div>
 
-<!-- ===== PRODUCTS ===== -->
+<!-- ===== PRODUCTS GRID ===== -->
 <div id="products"
 class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-5 p-5 mt-8 max-w-7xl mx-auto">
 </div>
@@ -54,9 +54,29 @@ class="fixed bottom-6 left-6 bg-black text-white px-6 py-3 rounded-full shadow-l
 <script>
 const PRICE = 49;
 
-// جميع المنتجات مع صور حقيقية
+// المنتجات مع مسارات الصور
 const products = [
  {name:"9PM", cat:"men", img:"images/9pm.jfif"},
+ {name:"Dior Homme Intense", cat:"men", img:"images/dior_homme_intense.jpg" },
+ {name:"Armani Code", cat:"men", img:"images/armanicode.jpg" },
+ {name:"Le Male JPG", cat:"men", img:"images/lemale.jpg" },
+ {name:"The One D&G", cat:"men", img:"images/theone.jpg" },
+ {name:"Terre d’Hermès", cat:"men", img:"images/terre.jpg" },
+ {name:"Aventus Creed", cat:"men", img:"images/aventus.jpg" },
+ {name:"Boss Bottled", cat:"men", img:"images/boss.jpg" },
+ {name:"Acqua Di Gio", cat:"men", img:"images/acqua.jpg" },
+ {name:"Givenchy Gentleman", cat:"men", img:"images/gentleman.jpg" },
+ {name:"Montblanc Explorer", cat:"men", img:"images/explorer.jpg" },
+ {name:"Miss Dior", cat:"women", img:"images/missdior.jpg" },
+ {name:"Coco Mademoiselle", cat:"women", img:"images/coco.jpg" },
+ {name:"Flowerbomb", cat:"women", img:"images/flowerbomb.jpg" },
+ {name:"Mon Guerlain", cat:"women", img:"images/monguerlain.jpg" },
+ {name:"Idôle Lancôme", cat:"women", img:"images/idole.jpg" },
+ {name:"Si Giorgio Armani", cat:"women", img:"images/si.jpg" },
+ {name:"My Way Armani", cat:"women", img:"images/myway.jpg" },
+ {name:"Hypnotic Poison", cat:"women", img:"images/hypnotic.jpg" },
+ {name:"Burberry Her", cat:"women", img:"images/burberryher.jpg" },
+ {name:"Delina Parfums de Marly", cat:"women", img:"images/niche.jfif" },
  {name:"Khamrah", cat:"women", img:"images/latafa.jfif"},
  {name:"Kilian Paris", cat:"women", img:"images/Kilian Paris.jfif"},
  {name:"Amber Musk", cat:"men", img:"images/Amber Musk.jfif"},
@@ -69,6 +89,7 @@ const products = [
  {name:"Black Opium", cat:"women", img:"images/blackopium.jpg"},
  {name:"Scandal", cat:"women", img:"images/scandal.jpg"},
  {name:"Oud Wood", cat:"men", img:"images/oudwood.jpg"},
+ {name:"Prada Paradoxe", cat:"women", img:"images/Prada.jfif"},
  {name:"Stronger With You", cat:"men", img:"images/stronger with you.jfif"},
  {name:"La Vie Est Belle", cat:"women", img:"images/lavie.jpg"},
  {name:"Chance Chanel", cat:"women", img:"images/chance.jpg"},
